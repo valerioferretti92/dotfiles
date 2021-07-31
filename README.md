@@ -1,2 +1,2 @@
 # dotfiles
-dotfiles management and installation
+Dotfiles management and installation
