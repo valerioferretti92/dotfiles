@@ -1,0 +1,27 @@
+# Commands and default behaviours
+term screen-256color
+defscrollback 10000		# Scrollback buffer size
+caption always			# Always display window title
+fit 				# Rise window if isplayed more then one
+defmousetrack off		# Mouse mode disabled by default
+
+#Copy paste
+bind p paste .			# Paste from copy buffer
+
+# Layout
+layout save default		# Save and restore region layout when reattaching
+
+# Windows
+bind l windowlist -b		# Get window list
+bind r title			# Rename window
+bind x kill			# Kill current window
+bind X quit 			# Kill all windows and terminate screen
+
+# Regions
+bind | split -v			# Split vertically
+bind - split -h			# Split horizontally
+bind k remove			# Kill current region
+bind K only			# Kill all regions but current one
+
+# Lock screen
+bind L lockscreen		# Lockscreen
