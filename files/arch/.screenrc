@@ -6,6 +6,7 @@ fit 				# Rise window if isplayed more then one
 defmousetrack off		# Mouse mode disabled by default
 altscreen on			# Handle commands that need to clear the screen after execution 
 startup_message off  		# Don't display start up message
+#truecolor on			# Does it exist? Is it supported in this version? 
 
 #Copy paste
 bind p paste .			# Paste from copy buffer
