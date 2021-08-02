@@ -4,6 +4,8 @@ defscrollback 10000		# Scrollback buffer size
 caption always			# Always display window title
 fit 				# Rise window if isplayed more then one
 defmousetrack off		# Mouse mode disabled by default
+altscreen on			# Handle commands that need to clear the screen after execution 
+startup_message off  		# Don't display start up message
 
 #Copy paste
 bind p paste .			# Paste from copy buffer
