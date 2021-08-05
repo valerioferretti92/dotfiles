@@ -1,5 +1,7 @@
 #/bin/bash
 
+set -e
+
 echo " * Setting up config files for unprivileged user:"
 printf "Setting up .zshrc... "
 ln -sf $(pwd)/$(dirname $0)/.zshrc ${HOME}/.zshrc
