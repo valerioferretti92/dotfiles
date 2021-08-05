@@ -25,9 +25,8 @@ bind | split -v			# Split vertically
 bind - split -h			# Split horizontally
 bind k remove			# Kill current region
 bind K only			# Kill all regions but current one
+caption string "%{= dd}"	# Disable horizontal split separator
+rendition so "="		# Disable vertical split separator
 
 # Lock screen
 bind L lockscreen		# Lockscreen
-
-caption string "%{= dd}"	# Disable horizontal split separator
-rendition so "="		# Disable vertical split separator
