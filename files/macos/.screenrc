@@ -17,7 +17,7 @@ layout save default				# Save and restore region layout when reattaching
 # Windows
 bind l windowlist -b				# Get window list
 bind r title					# Rename window
-bind x kill					# Kill current window
+bind x eval "kill" "remove"			# Kill current window
 bind X quit 					# Kill all windows and terminate screen
 
 # Regions
