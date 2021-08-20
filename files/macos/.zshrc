@@ -124,3 +124,6 @@ export PATH="/usr/local/sbin:$PATH"
 # screen indicator
 if [ -z $STY ]; then INDICATOR_COLOR=cyan; else INDICATOR_COLOR=red; fi 
 export PROMPT="$PROMPT%{$fg[$INDICATOR_COLOR]%}* "
+
+# kubectl default text editor
+export KUBE_EDITOR="/usr/local/bin/nvim"
