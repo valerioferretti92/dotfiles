@@ -12,6 +12,8 @@ Plug 'fatih/vim-go'
 Plug 'powerline/powerline'
 " Nerd tree
 Plug 'preservim/nerdtree'
+" Java syntax highlighting
+Plug 'uiiaoo/java-syntax.vim'
 
 call plug#end()
 
