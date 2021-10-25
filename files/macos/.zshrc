@@ -104,9 +104,6 @@ source $ZSH/oh-my-zsh.sh
 # AWS MFA
 source /Users/valerio.ferretti/aws-mfa-script/alias.sh
 
-# ANSIBLE
-export ANSIBLE_VAULT_PASSWORD_FILE=~/.vault_pass.txt
-
 # ZSH syntax highlighting
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -126,4 +123,5 @@ if [ -z $STY ]; then INDICATOR_COLOR=cyan; else INDICATOR_COLOR=red; fi
 export PROMPT="$PROMPT%{$fg[$INDICATOR_COLOR]%}* "
 
 # kubectl default text editor
+export EDITOR="/usr/local/bin/nvim"
 export KUBE_EDITOR="/usr/local/bin/nvim"

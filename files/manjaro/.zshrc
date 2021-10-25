@@ -206,4 +206,5 @@ if [ -e /home/stacksmasher/.nix-profile/etc/profile.d/nix.sh ]; then . /home/sta
 export TERM='screen-256color'
 
 # kubectl default text editor
+export EDITOR="/usr/local/bin/nvim"
 export KUBE_EDITOR="/usr/local/bin/nvim"
