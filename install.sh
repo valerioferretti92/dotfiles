@@ -6,6 +6,7 @@ echo "Dotfiles provided for given environments:"
 echo -e "*****************************************"
 echo "	1) Manjaro"
 echo "	2) MacOS"
+echo "	3) Arch"
 echo -e "*****************************************\n"
 
 read -p "Select your environment: " ENV_INDEX
@@ -15,6 +16,9 @@ case $ENV_INDEX in
     ;;
   2)
     $(dirname $0)/files/macos/install.sh
+    ;;
+  3)
+    $(dirname $0)/files/arch/install.sh
     ;;
   *)
     echo "No environment selected, bye!"

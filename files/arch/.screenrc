@@ -1,0 +1,34 @@
+# Commands and default behaviours
+term screen-256color
+defscrollback 10000				# Scrollback buffer size
+caption always					# Always display window title
+fit 						# Rise window if isplayed more then one
+defmousetrack off				# Mouse mode disabled by default
+altscreen on					# Handle commands that need to clear the screen after execution 
+startup_message off  				# Don't display start up message
+#truecolor on					# Does it exist? Is it supported in this version? 
+
+#Copy paste
+bind p paste .					# Paste from copy buffer
+
+# Layout
+layout save default				# Save and restore region layout when reattaching
+
+# Windows
+bind l windowlist -b				# Get window list
+bind r title					# Rename window
+bind x eval "kill" "remove"			# Kill current window
+bind X quit 					# Kill all windows and terminate screen
+bind n next					# Switch to next window
+bind p prev					# Switch to previous window
+
+# Regions
+bind | eval "split -v" "focus" "screen $SHELL"	# Split vertically
+bind - eval "split -h" "focus" "screen $SHELL" 	# Split horizontally
+bind k remove					# Kill current region
+bind K only					# Kill all regions but current one
+caption string "%{= dd}"        		# Disable horizontal split separator
+rendition so "="                		# Disable vertical split separator
+
+# Lock screen
+bind L lockscreen				# Lockscreen
