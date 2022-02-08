@@ -4,8 +4,6 @@ set -e
 
 echo " * Setting up config files for unprivileged user:"
 printf "Setting up .zshrc... "
-printf "REMEMBER to install powerlevel10k and run 'p10k configure'"
-printf "Instructions: https://davidtsadler.com/posts/arch/2020-09-07/installing-zsh-and-powerlevel10k-on-arch-linux/"
 ln -sf $(pwd)/$(dirname $0)/.zshrc ${HOME}/.zshrc
 echo "Done"
 printf "Setting up .screenrc... "

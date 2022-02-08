@@ -26,9 +26,23 @@ case $ENV_INDEX in
     ;;
 esac
 
-echo -e "\n\nnvim may require additional set up:"
-echo " 1) Installation of vim-plug"
+echo -e "\n\nscreen additional set up:"
+echo " 1) Installation"
+
+echo -e "\n\nzsh additional set up:"
+echo " 1) Installation"
+echo " 2) Set up as default shell"
+
+echo -e "\n\nIf powerlevel10k zsh theme is used, additional setup:"
+echo " 1) Installation of additional fonts"
+echo " 2) Installation"
+echo " 2) Configuration 'p10k configure'"
+echo " NB) Guide: https://davidtsadler.com/posts/arch/2020-09-07/installing-zsh-and-powerlevel10k-on-arch-linux/"
+
+echo -e "\n\nnvim additional set up:"
+echo " 1) Installation"
+echo " 2) Installation of vim-plug"
 echo "    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \\"
 echo "    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'"
-echo " 2) Plugin installation"
+echo " 3) Plugin installation"
 echo "    Open nvim and enter the command :PlugInstall"
