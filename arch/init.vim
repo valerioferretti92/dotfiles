@@ -1,5 +1,6 @@
 " Commands
 set relativenumber
+set nu rnu
 syntax on
 
 call plug#begin('~/.local/share/nvim/plugged')
