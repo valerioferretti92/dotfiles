@@ -47,8 +47,8 @@ export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=
 
 # Aliases
-alias ls='lsd --icon never'
-alias ll='lsd -la --icon never'
-alias l='lsd -la --icon never'
+alias ls='lsd --no-symlink --icon never'
+alias ll='lsd --no-symlink -la --icon never'
+alias l='lsd --no-symlink -la --icon never'
 alias yay='yay --color=always'
 
