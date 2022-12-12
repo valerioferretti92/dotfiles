@@ -51,4 +51,5 @@ colorscheme gruvbox
 " Tab and indentation
 set tabstop=4 softtabstop=0 noexpandtab shiftwidth=4
 
+" Mouse
 set mousemodel=extend
