@@ -14,6 +14,10 @@ Plug 'fatih/vim-go'
 Plug 'uiiaoo/java-syntax.vim'
 " Lightline
 Plug 'itchyny/lightline.vim'
+" React
+Plug 'mxw/vim-jsx'
+" Javascript
+Plug 'pangloss/vim-javascript'
 
 call plug#end()
 

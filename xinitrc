@@ -3,7 +3,7 @@
 madrid_office_setup() {
 	if [[ ! -z $HDMI_SCREEN ]]
 	then
-		echo -e "Xft.dpi: 192\nXcursor.size: 32" > ~/.Xresources
+		echo -e "Xft.dpi: 192\nXcursor.size: 48" > ~/.Xresources
 		xrdb -merge ~/.Xresources
 		export GDK_SCALE=2
 		export GDK_DPI_SCALE=0.5
