@@ -339,8 +339,8 @@ def get_widget_list(font_size):
         widget.Battery(
             font = "JetBrainsMono Nerd Font",
             fontsize = font_size,
-            charge_char = '↑',
-            discharge_char = '↓',
+            charge_char = '\u25b2',
+            discharge_char = '\u25bc',
             format = '{char} {percent:2.0%} {watt:.2f} W',
             foreground = colors[5],
             background = colors[0],
@@ -383,14 +383,14 @@ def get_widget_list(font_size):
             font = "JetBrainsMono Nerd Font",
             fontsize = font_size,
             background = colors[0],
-            foreground = colors[2],
+            foreground = '474747',
             padding = 2,
         ),
         widget.QuickExit(
             font = "JetBrainsMono Nerd Font",
             fontsize = font_size,
             background = colors[0],
-            default_text='XXX',
+            default_text=' \u23fc ',
             countdown_format='[{}]'
         ),
         widget.Sep(
@@ -404,11 +404,11 @@ def get_widget_list(font_size):
 
 screens = [
     Screen(
-        wallpaper='~/Pictures/rice_fields_3840x2160.jpg',
+        wallpaper='~/Pictures/cloud_castle_3840x2160.jpg',
         wallpaper_mode='fill',
         top=bar.Bar(get_widget_list(font_size_screen1), bar_heigth_screen1)),
     Screen(
-        wallpaper='~/Pictures/rice_fields_3840x2160.jpg',
+        wallpaper='~/Pictures/cloud_castle_3840x2160.jpg',
         wallpaper_mode='fill',
         top=bar.Bar(get_widget_list(font_size_screen2), bar_heigth_screen2)
     )
