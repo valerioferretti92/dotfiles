@@ -13,15 +13,15 @@ fi
 
 if [ "$1" = "--fullscreen"  ] || [ "$1" = "-f" ]
 then
-	magick import -quiet -window root /home/stacksmasher/Pictures/$(date +%FZ%T-screenshot.png)
 	play "$(dirname "$0")/../files/camera-shutter.wav"
+	magick import -quiet -window root /home/stacksmasher/Pictures/$(date +%FZ%T-screenshot.png)
 	exit 0
 fi
 
 if [ "$1" = "--selection" ] || [ "$1" = "-s" ]
 then
-	magick import -quiet /home/stacksmasher/Pictures/$(date +%FZ%T-screenshot.png)
 	play "$(dirname "$0")/../files/camera-shutter.wav"
+	magick import -quiet /home/stacksmasher/Pictures/$(date +%FZ%T-screenshot.png)
 	exit 0
 fi
 

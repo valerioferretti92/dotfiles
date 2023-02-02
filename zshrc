@@ -51,4 +51,5 @@ alias ls='lsd --no-symlink --icon never'
 alias ll='lsd --no-symlink -la --icon never'
 alias l='lsd --no-symlink -la --icon never'
 alias yay='yay --color=always'
+alias screenshot='/home/stacksmasher/.config/qtile/scripts/screenshot.sh'
 
