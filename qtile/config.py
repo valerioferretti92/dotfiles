@@ -257,6 +257,12 @@ def get_widget_list(font_size):
             foreground=colors[0],
             background=colors[0]
         ),
+        widget.Image(
+            background=colors[0],
+            foreground='474747',
+            filename='~/.config/qtile/icons/celsius.svg',
+            margin=8
+        ),
         widget.ThermalSensor(
             font="JetBrainsMono Nerd Font",
             fontsize=font_size,
@@ -274,6 +280,12 @@ def get_widget_list(font_size):
             background=colors[0],
             foreground='474747',
             padding=2,
+        ),
+        widget.Image(
+            background=colors[0],
+            foreground='474747',
+            filename='~/.config/qtile/icons/celsius.svg',
+            margin=8
         ),
         widget.ThermalSensor(
             font="JetBrainsMono Nerd Font",
@@ -293,6 +305,12 @@ def get_widget_list(font_size):
             foreground='474747',
             padding=2,
         ),
+        widget.Image(
+            background=colors[0],
+            foreground='474747',
+            filename='~/.config/qtile/icons/cpu.svg',
+            margin=8
+        ),
         widget.CPU(
             font="JetBrainsMono Nerd Font",
             fontsize=font_size,
@@ -308,6 +326,12 @@ def get_widget_list(font_size):
             background=colors[0],
             foreground='474747',
             padding=2,
+        ),
+        widget.Image(
+            background=colors[0],
+            foreground='474747',
+            filename='~/.config/qtile/icons/memory.svg',
+            margin=8
         ),
         widget.Memory(
             font="JetBrainsMono Nerd Font",
@@ -370,7 +394,7 @@ def get_widget_list(font_size):
             padding=5
         ),
         widget.TextBox(
-            text='|',
+            text='|\U0001f567',
             font="JetBrainsMono Nerd Font",
             fontsize=font_size,
             background=colors[0],
@@ -382,7 +406,7 @@ def get_widget_list(font_size):
             fontsize=font_size,
             foreground=colors[11],
             background=colors[0],
-            format="\U0001f567 %A, %B %d - %H:%M:%S"
+            format="%A, %B %d - %H:%M:%S"
         ),
         widget.TextBox(
             text='|',
