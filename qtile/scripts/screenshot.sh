@@ -20,8 +20,9 @@ fi
 
 if [ "$1" = "--selection" ] || [ "$1" = "-s" ]
 then
-	play "$(dirname "$0")/../files/camera-shutter.wav"
+	play "$(dirname "$0")/../files/getready.wav"
 	magick import -quiet /home/stacksmasher/Pictures/$(date +%FZ%T-screenshot.png)
+	play "$(dirname "$0")/../files/camera-shutter.wav"
 	exit 0
 fi
 

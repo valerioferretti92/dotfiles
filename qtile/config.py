@@ -149,10 +149,10 @@ keys = [
         desc="Volume down"),
     Key([], "XF86AudioMute", lazy.spawn("amixer -q sset Master toggle"),
         desc="Volume zero"),
-    Key([], "Print", lazy.spawn(script_path+"screenshot -f"),
-        desc="Screenshoot"),
+    Key([], "Print", lazy.spawn(script_path+"screenshot.sh -f"),
+        desc="Screenshot"),
     Key([mod], "Print", lazy.spawn(script_path+"screenshot.sh -s"),
-        desc="Screenshoot of selection")
+        desc="Screenshot of selection")
 ]
 
 groups = [Group(i) for i in "123456789"]
