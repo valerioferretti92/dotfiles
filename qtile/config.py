@@ -40,6 +40,7 @@ column_margin = 4
 column_margin_on_single = 8
 script_path = "/home/stacksmasher/.config/qtile/scripts/"
 rofi_path = "/home/stacksmasher/.config/rofi/"
+backgrounds_path = "/home/stacksmasher/.config/qtile/backgrounds/"
 
 # Respectively 14 - 24 for 1920x1080, 28 - 48 for 3840x2160
 primary_screen_res = os.environ.get('PRIMARY_SCREEN_RESOLUTION')
@@ -435,11 +436,11 @@ def get_widget_list(font_size):
 
 screens = [
     Screen(
-        wallpaper='~/Pictures/fluid_3840x2160.jpg',
+        wallpaper=backgrounds_path + 'fluid_3840x2160.jpg',
         wallpaper_mode='fill',
         top=bar.Bar(get_widget_list(font_size_screen1), bar_heigth_screen1)),
     Screen(
-        wallpaper='~/Pictures/fluid_3840x2160.jpg',
+        wallpaper=backgrounds_path + 'fluid_3840x2160.jpg',
         wallpaper_mode='fill',
         top=bar.Bar(get_widget_list(font_size_screen2), bar_heigth_screen2)
     )
