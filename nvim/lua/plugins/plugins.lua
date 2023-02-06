@@ -1,12 +1,12 @@
 return {
-  -- add gruvbox
+  -- Gruvbox
   { "ellisonleao/gruvbox.nvim" },
-
-  -- Configure LazyVim to load gruvbox
   {
     "LazyVim/LazyVim",
     opts = {
       colorscheme = "gruvbox",
     },
   },
+  -- Vim tmux navigator
+  { "christoomey/vim-tmux-navigator" },
 }

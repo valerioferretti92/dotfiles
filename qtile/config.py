@@ -38,6 +38,7 @@ font_size_screen2 = 14
 bar_heigth_screen2 = 24
 column_margin = 4
 column_margin_on_single = 8
+icons_margin = 4
 script_path = "/home/stacksmasher/.config/qtile/scripts/"
 rofi_path = "/home/stacksmasher/.config/rofi/"
 backgrounds_path = "/home/stacksmasher/.config/qtile/backgrounds/"
@@ -52,6 +53,7 @@ if primary_screen_res == "3840x2160" or secondary_screen_res == "3840x2160":
     bar_heigth_screen2 = 48
     column_margin = 8
     column_margin_on_single = 16
+    icons_margin = 8
 
 
 @hook.subscribe.startup_once
@@ -262,7 +264,7 @@ def get_widget_list(font_size):
             background=colors[0],
             foreground='474747',
             filename='~/.config/qtile/icons/celsius.svg',
-            margin=8
+            margin=icons_margin
         ),
         widget.ThermalSensor(
             font="JetBrainsMono Nerd Font",
@@ -286,7 +288,7 @@ def get_widget_list(font_size):
             background=colors[0],
             foreground='474747',
             filename='~/.config/qtile/icons/celsius.svg',
-            margin=8
+            margin=icons_margin
         ),
         widget.ThermalSensor(
             font="JetBrainsMono Nerd Font",
@@ -310,7 +312,7 @@ def get_widget_list(font_size):
             background=colors[0],
             foreground='474747',
             filename='~/.config/qtile/icons/cpu.svg',
-            margin=8
+            margin=icons_margin
         ),
         widget.CPU(
             font="JetBrainsMono Nerd Font",
@@ -332,7 +334,7 @@ def get_widget_list(font_size):
             background=colors[0],
             foreground='474747',
             filename='~/.config/qtile/icons/memory.svg',
-            margin=8
+            margin=icons_margin
         ),
         widget.Memory(
             font="JetBrainsMono Nerd Font",
