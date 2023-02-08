@@ -137,6 +137,7 @@ keys = [
         desc="Reload the config"),
     Key([mod, "control"], "k", lazy.shutdown(),
         desc="Shutdown Qtile"),
+    Key([mod], "f", lazy.window.toggle_floating()),
 
     # Custom key bindings
     Key([mod], "g", lazy.spawn("google-chrome-stable"),
