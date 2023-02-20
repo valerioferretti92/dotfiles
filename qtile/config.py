@@ -175,6 +175,10 @@ for i in groups:
             desc="Switch to & move focused window to group {}".format(i.name),
         )
     ])
+keys.extend([
+    Key([mod], "Right", lazy.screen.next_group(skip_empty=True)),
+    Key([mod], "Left", lazy.screen.prev_group(skip_empty=True))
+])
 
 layouts = [
     layout.Columns(

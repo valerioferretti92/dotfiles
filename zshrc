@@ -35,6 +35,8 @@ if [[ -n $DISPLAY ]];
 then
 	source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 	[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+  typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+  motivate
 else 
 	source ~/.asciigit.zsh
 fi
