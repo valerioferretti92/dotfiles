@@ -443,11 +443,11 @@ def get_widget_list(font_size):
 
 screens = [
     Screen(
-        wallpaper=backgrounds_path + 'fluid_3840x2160.jpg',
+        wallpaper=backgrounds_path + 'material_skyline_3840x2160.jpg',
         wallpaper_mode='fill',
         top=bar.Bar(get_widget_list(font_size_screen1), bar_heigth_screen1)),
     Screen(
-        wallpaper=backgrounds_path + 'fluid_3840x2160.jpg',
+        wallpaper=backgrounds_path + 'material_skyline_3840x2160.jpg',
         wallpaper_mode='fill',
         top=bar.Bar(get_widget_list(font_size_screen2), bar_heigth_screen2)
     )
