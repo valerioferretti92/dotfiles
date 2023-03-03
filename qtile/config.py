@@ -33,9 +33,9 @@ from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
 font_size_screen1 = 14
-bar_heigth_screen1 = 24
+bar_heigth_screen1 = 26
 font_size_screen2 = 14
-bar_heigth_screen2 = 24
+bar_heigth_screen2 = 26
 column_margin = 4
 column_margin_on_single = 8
 icons_margin = 4
@@ -48,9 +48,9 @@ primary_screen_res = os.environ.get('PRIMARY_SCREEN_RESOLUTION')
 secondary_screen_res = os.environ.get('SECONDARY_SCREEN_RESOLUTION')
 if primary_screen_res == "3840x2160" or secondary_screen_res == "3840x2160":
     font_size_screen1 = 28
-    bar_heigth_screen1 = 48
+    bar_heigth_screen1 = 52
     font_size_screen2 = 28
-    bar_heigth_screen2 = 48
+    bar_heigth_screen2 = 52
     column_margin = 8
     column_margin_on_single = 16
     icons_margin = 8
@@ -443,11 +443,11 @@ def get_widget_list(font_size):
 
 screens = [
     Screen(
-        wallpaper=backgrounds_path + 'material_skyline_3840x2160.jpg',
+        wallpaper=backgrounds_path + 'material_sunset_3840x2160.jpg',
         wallpaper_mode='fill',
         top=bar.Bar(get_widget_list(font_size_screen1), bar_heigth_screen1)),
     Screen(
-        wallpaper=backgrounds_path + 'material_skyline_3840x2160.jpg',
+        wallpaper=backgrounds_path + 'material_sunset_3840x2160.jpg',
         wallpaper_mode='fill',
         top=bar.Bar(get_widget_list(font_size_screen2), bar_heigth_screen2)
     )
