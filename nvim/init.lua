@@ -18,30 +18,31 @@ function lazy.install(path)
 end
 
 function lazy.setup(plugins)
-  -- You can "comment out" the line below after lazy.nvim is installed
   -- lazy.install(lazy.path)
-
   vim.opt.rtp:prepend(lazy.path)
   require('lazy').setup(plugins, lazy.opts)
 end
 
 lazy.path = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 lazy.opts = {}
-
 lazy.setup({
-	{ 
-		'ellisonleao/gruvbox.nvim' 
+	{
+		'ellisonleao/gruvbox.nvim'
 	},
-	{ 
-		'nvim-lualine/lualine.nvim' 
+	{
+		'nvim-lualine/lualine.nvim'
 	},
-	{ 
+	{
 		'christoomey/vim-tmux-navigator'
 	},
 	{
-		'nvim-telescope/telescope.nvim', 
-		tag = '0.1.1', 
+		'nvim-telescope/telescope.nvim',
+		tag = '0.1.1',
 		dependencies = { 'nvim-lua/plenary.nvim' }
+	},
+	{
+		'goolord/alpha-nvim',
+		dependencies = { 'nvim-tree/nvim-web-devicons' },
 	},
 })
 

@@ -10,7 +10,7 @@ require("gruvbox").setup({
   invert_tabline = false,
   invert_intend_guides = false,
   inverse = true,
-  contrast = "soft",
+  contrast = "hard",
   overrides = {},
 })
 
@@ -102,7 +102,7 @@ telescope.setup {
             preview_cutoff = 120,
         },
         file_sorter = require("telescope.sorters").get_fuzzy_file,
-        file_ignore_patterns = { "node_modules", ".git/", "dist/" },
+        file_ignore_patterns = { "node_modules", ".git/", "dist/", "go" },
         generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
         path_display = { "absolute" },
         winblend = 0,
@@ -125,3 +125,6 @@ telescope.setup {
         },
     },
 }
+
+-- Alpha config
+require'alpha'.setup(require 'alpha.themes.startify'.config)
