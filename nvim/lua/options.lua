@@ -8,4 +8,4 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = false
 vim.opt.list = true
 vim.opt.listchars:append "space:⋅"
-vim.opt.listchars:append "eol:↴"
+vim.cmd("colorscheme gruvbox")
