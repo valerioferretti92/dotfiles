@@ -30,9 +30,11 @@ require("lazy").setup({
 		'goolord/alpha-nvim',
 		dependencies = { 'nvim-tree/nvim-web-devicons' },
 	},
+	{
+		'nvim-treesitter/nvim-treesitter'
+	}
 })
 
-require "plugins-config"
 require "options"
 require "mappings"
-
+require "plugins-config"

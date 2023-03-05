@@ -128,3 +128,16 @@ require("telescope").setup({
 
 -- Alpha config
 require("alpha").setup(require 'alpha.themes.startify'.config)
+
+-- Treesitter config
+require("nvim-treesitter.configs").setup {
+  ensure_installed = { "c", "lua", "vim", "help", "query" },
+  sync_install = false,
+  auto_install = true,
+  ignore_install = {},
+  highlight = {
+    enable = true,
+    disable = {},
+    additional_vim_regex_highlighting = false,
+  },
+}
