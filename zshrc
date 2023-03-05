@@ -38,7 +38,7 @@ then
   typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
   motivate
 else 
-	source ~/.asciigit.zsh
+	source ~/.asciionly.zsh
 fi
 
 # ZSH syntax highlighting
