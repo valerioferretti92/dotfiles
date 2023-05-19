@@ -43,6 +43,7 @@ fi
 
 # ZSH syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 # ZSH substring search
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=
@@ -55,3 +56,6 @@ alias l='lsd --no-symlink -la --icon never'
 alias yay='yay --color=always'
 alias screenshot='/home/stacksmasher/.config/qtile/scripts/screenshot.sh'
 
+# Env vars
+export PAGER=most
+export PATH=$PATH:~/go/bin
