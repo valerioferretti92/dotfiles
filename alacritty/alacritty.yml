@@ -12,7 +12,10 @@ font:
     style: Italic
 
 window:
-  opacity: 0.95
+  opacity: 0.90
   padding:
    x: 10
    y: 10
+  dimensions:
+    columns: 138
+    lines: 40

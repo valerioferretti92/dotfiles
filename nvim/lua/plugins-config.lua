@@ -3,7 +3,6 @@ require("gruvbox").setup({
 	undercurl = true,
 	underline = true,
 	bold = true,
-	italic = true,
 	strikethrough = true,
 	invert_selection = false,
 	invert_signs = false,
@@ -134,7 +133,7 @@ require("nvim-treesitter.configs").setup {
   ensure_installed = { "c", "lua", "vim", "help", "query" },
   sync_install = false,
   auto_install = true,
-  ignore_install = {},
+  ignore_install = { "help" },
   highlight = {
     enable = true,
     disable = {},

@@ -41,7 +41,7 @@ column_margin_on_single = 8
 icons_margin = 4
 script_path = "/home/stacksmasher/.config/qtile/scripts/"
 rofi_path = "/home/stacksmasher/.config/rofi/"
-backgrounds_path = "/home/stacksmasher/.config/qtile/backgrounds/"
+backgrounds_path = "/home/stacksmasher/pictures/backgrounds/"
 
 # Respectively 14 - 24 for 1920x1080, 28 - 48 for 3840x2160
 primary_screen_res = os.environ.get('PRIMARY_SCREEN_RESOLUTION')
