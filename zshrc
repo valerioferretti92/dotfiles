@@ -113,7 +113,6 @@ source $ZSH/oh-my-zsh.sh
 # Powerlevel 10k VS asciionly
 if [[ -n $DISPLAY ]];
 then
-	typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 	# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 	[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 	motivate
@@ -122,6 +121,7 @@ else
 fi
 
 # Env vars
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 export PATH=$PATH:${HOME}/go/bin
 
 # Scripts
