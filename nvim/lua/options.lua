@@ -9,3 +9,4 @@ vim.opt.expandtab = false
 vim.opt.list = true
 vim.opt.listchars:append "space:⋅"
 vim.cmd("colorscheme gruvbox")
+vim.cmd("highlight Normal guibg=NONE ctermbg=NONE")
