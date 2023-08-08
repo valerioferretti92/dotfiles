@@ -16,7 +16,7 @@ require("lazy").setup({
 		'ellisonleao/gruvbox.nvim'
 	},
 	{
-		'nvim-lualine/lualine.nvim'
+		'ojroques/nvim-hardline'
 	},
 	{
 		'christoomey/vim-tmux-navigator'
@@ -25,10 +25,6 @@ require("lazy").setup({
 		'nvim-telescope/telescope.nvim',
 		tag = '0.1.1',
 		dependencies = { 'nvim-lua/plenary.nvim' }
-	},
-	{
-		'goolord/alpha-nvim',
-		dependencies = { 'nvim-tree/nvim-web-devicons' },
 	},
 	{
 		'nvim-treesitter/nvim-treesitter'
