@@ -12,7 +12,7 @@ font:
     style: Italic
 
 window:
-  opacity: 0.90
+  opacity: 0.95
   padding:
    x: 10
    y: 10
