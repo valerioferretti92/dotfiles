@@ -135,6 +135,7 @@ else
 	alias l="lsd -la"
 	alias ll="lsd -la"
 	export PAGER=less
+	export MINIKUBE_IN_STYLE=false
 
 	# Motivational message
 	motivate
