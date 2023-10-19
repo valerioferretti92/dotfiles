@@ -22,6 +22,9 @@ require("lazy").setup({
 		'christoomey/vim-tmux-navigator'
 	},
 	{
+		'crispgm/nvim-go'
+	},
+	{
 		'nvim-telescope/telescope.nvim',
 		tag = '0.1.1',
 		dependencies = { 'nvim-lua/plenary.nvim' }
