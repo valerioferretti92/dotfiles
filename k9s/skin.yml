@@ -1,44 +1,80 @@
 # -----------------------------------------------------------------------------
-# Transparent skin
-# Preserve your terminal session background color
+# K9s Kiss Skin
+# Author: [@beejeebus](justin.p.randell@gmail.com)
 # -----------------------------------------------------------------------------
 
-# Skin...
+cyan: &cyan "#49a89d"
+yellow: &yellow "#ffaf00"
+pink: &pink "#bc859b"
+grey: &grey "#828482"
+orange: &orange "#fb5310"
+
 k9s:
   body:
+    fgColor: default
     bgColor: default
-  promt:
+    logoColor: *yellow
+  prompt:
+    fgColor: default
     bgColor: default
+    suggestColor: default
   info:
+    fgColor: *yellow
     sectionColor: default
   dialog:
+    fgColor: *cyan
     bgColor: default
-    labelFgColor: default
+    buttonFgColor: *cyan
+    buttonBgColor: default
+    buttonFocusFgColor: *cyan
+    buttonFocusBgColor: default
+    labelFgColor: *yellow
     fieldFgColor: default
   frame:
-    crumbs:
-      bgColor: default
-    title:
-      bgColor: default
-      counterColor: default
+    border:
+      fgColor: *cyan
+      focusColor: default
     menu:
       fgColor: default
+      keyColor: default
+      numKeyColor: default
+    crumbs:
+      fgColor: default
+      bgColor: default
+      activeColor: default
+    status:
+      newColor: default
+      modifyColor: default
+      addColor: default
+      errorColor: default
+      highlightColor: default
+      killColor: default
+      completedColor: default
+    title:
+      fgColor: *cyan
+      bgColor: default
+      highlightColor: default
+      counterColor: default
+      filterColor: default
   views:
-    charts:
-      bgColor: default
     table:
+      fgColor: default
       bgColor: default
+      cursorFgColor: *cyan
+      cursorBfColor: default
       header:
         fgColor: default
         bgColor: default
-    xray:
-      bgColor: default
+        sorterColor: default
+    yaml:
+      keyColor: *pink
+      colonColor: default
+      valueColor: *cyan
     logs:
+      fgColor: default
       bgColor: default
       indicator:
+        fgColor: default
         bgColor: default
         toggleOnColor: default
         toggleOffColor: default
-    yaml:
-      colonColor: default
-      valueColor: default

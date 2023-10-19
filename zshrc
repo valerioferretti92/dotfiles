@@ -136,6 +136,7 @@ else
 	alias ll="lsd -la"
 	export PAGER=less
 	export MINIKUBE_IN_STYLE=false
+	export EDITOR="/snap/bin/nvim"
 
 	# Motivational message
 	motivate
