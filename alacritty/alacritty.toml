@@ -1,0 +1,25 @@
+[font]
+size = 12
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[window]
+opacity = 0.95
+
+[window.dimensions]
+columns = 138
+lines = 40
+
+[window.padding]
+x = 10
+y = 10
