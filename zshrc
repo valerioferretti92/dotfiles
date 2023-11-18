@@ -1,8 +1,8 @@
 # Env vars
-export PATH=$PATH:${HOME}/go/bin
+export PATH=${PATH}:${HOME}/go/bin
 
 # Scripts
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ${HOME}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Asciionly
 if [[ -z $DISPLAY ]];
@@ -127,16 +127,19 @@ else
 	# alias ohmyzsh="mate ~/.oh-my-zsh"
 	
 	# Powerlevel 10k VS asciionly
-		# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+	# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 	[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 	
 	# Aliases
 	alias ls="lsd"
 	alias l="lsd -la"
 	alias ll="lsd -la"
+	alias alacritty="WAYLAND_DISPLAY= alacritty"
+	
+	# Env vars
 	export PAGER=less
 	export MINIKUBE_IN_STYLE=false
-	export EDITOR="/snap/bin/nvim"
+	export EDITOR="/usr/bin/nvim"
 
 	# Motivational message
 	motivate
