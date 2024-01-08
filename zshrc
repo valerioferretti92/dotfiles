@@ -1,13 +1,7 @@
-# Env vars
-export PATH=${PATH}:${HOME}/go/bin
-
-# Scripts
-source ${HOME}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 # Asciionly
-if [[ -z $DISPLAY ]];
+if [[ -z ${DISPLAY} ]];
 then
-	source ~/.asciionly.zsh
+	source ${HOME}/.asciionly.zsh
 	
 	# Aliases
 	alias ls="lsd --icon never --no-symlink"
@@ -33,8 +27,7 @@ else
 	# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 	
 	# Themes
-	# ZSH_THEME="robbyrussell"
-	ZSH_THEME="powerlevel10k/powerlevel10k"
+	ZSH_THEME="robbyrussell"
 	
 	# Set list of themes to pick from when loading at random
 	# Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -134,14 +127,20 @@ else
 	alias ls="lsd"
 	alias l="lsd -la"
 	alias ll="lsd -la"
-	alias alacritty="WAYLAND_DISPLAY= alacritty"
 	
-	# Env vars
-	export PAGER=less
-	export MINIKUBE_IN_STYLE=false
-	export EDITOR="/usr/bin/nvim"
-
 	# Motivational message
 	motivate
-	typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 fi
+
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
+
+# Scripts
+source ${HOME}/repos/external/powerlevel10k/powerlevel10k.zsh-theme
+source ${HOME}/repos/external/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Env vars
+export PATH=${PATH}:${HOME}/go/bin
+export PAGER=less
+export MINIKUBE_IN_STYLE=false
+export EDITOR="/usr/bin/nvim"
+
