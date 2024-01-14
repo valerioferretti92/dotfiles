@@ -47,7 +47,7 @@ window#waybar {
 
 #memory {
 	color: #15161e;
-	background: #e0af68;
+	background: #9ece6a;
 	border-radius: 15px;
 	margin: 5px;
 	padding: 0px 10px;
@@ -55,7 +55,7 @@ window#waybar {
 
 #clock {
 	color: #15161e;
-	background: #bb9af7;
+	background: #ff79c6;
 	border-radius: 15px;
 	margin: 5px;
 	padding: 0px 10px;
@@ -63,7 +63,7 @@ window#waybar {
 
 #cpu {
 	color: #15161e;
-	background: #7dcfff;
+	background: #f1fa8c;
 	border-radius: 15px;
 	margin: 5px;
 	padding: 0px 10px;
@@ -71,7 +71,7 @@ window#waybar {
 
 #disk {
 	color: #15161e;
-	background: #9ece6a;
+	background: #7dcfff;
 	border-radius: 15px;
 	margin: 5px;
 	padding: 0px 10px;
@@ -79,7 +79,7 @@ window#waybar {
 
 #battery {
 	color: #15161e;
-	background: #ff79c6;
+	background: #c0caf5;
 	border-radius: 15px;
 	margin: 5px;
 	padding: 0px 10px;
@@ -87,7 +87,7 @@ window#waybar {
 
 #network {
 	color: #15161e;
-	background: #f1fa8c;
+	background: #e0af68;
 	border-radius: 15px;
 	margin: 5px;
 	padding: 0px 10px;
@@ -103,7 +103,7 @@ window#waybar {
 
 #pulseaudio {
 	color: #15161e;
-	background: #c0caf5;
+	background: #bb9af7;
 	border-radius: 15px;
 	margin: 5px;
 	padding: 0px 10px;
