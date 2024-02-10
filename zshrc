@@ -134,6 +134,9 @@ fi
 
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 
+# Aliases
+alias dc="cd"
+
 # Scripts
 source ${HOME}/repos/external/powerlevel10k/powerlevel10k.zsh-theme
 source ${HOME}/repos/external/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
