@@ -28,7 +28,7 @@ fi
 # Create lock file
 touch "$LOCK_FILE"
 
-WALLPAPERS_PATH=${1:-$HOME/repos/public/dotfiles/wallpapers}
+WALLPAPERS_PATH=${1:-$HOME/repos/public/dotfiles/wallpapers/files}
 WALLPAPER_NAME=$(ls ${WALLPAPERS_PATH} | shuf -n 1)
 
 # Hyprpaper
