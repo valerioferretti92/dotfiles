@@ -4,7 +4,7 @@ font="SauceCodePro Nerd Font"
 
 clock
 timestr=%H:%M:%S
-datestr=%a, %e of %B
+datestr=%a %d %b %Y
 
 screenshots
 
