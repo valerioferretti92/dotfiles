@@ -24,12 +24,12 @@ window#waybar {
 	border-radius: 15px;
 	margin: 5px;
 	padding: 0px 10px;
-	color: #33bff1;
+	color: #d3d3d3;
 }
 
 #workspaces button.active {
-	background: #1a181a;
-	color: #33bff1;
+	background: #d3d3d3;
+	color: #000000;
 	margin: 5px;
 	padding: 0px 10px;
 }
