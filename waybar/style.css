@@ -1,6 +1,9 @@
+@import '../../.cache/wal/colors-waybar.css';
+
 /* -----------------------------------------------------
  * General
  * ----------------------------------------------------- */
+
 * {
 	font-size: 14px;
 	font-family: JetBrainsMono Nerd Font;
@@ -10,11 +13,10 @@ window#waybar {
 	background-color: rgba(29,31,33,0.6);
 	border-bottom: 1px solid rgba(29,31,33,0);
 	border-radius: 15px;
-	color: #f8f8f2;
 }
 
 /* -----------------------------------------------------
- * Workspaces
+ * Modules
  * ----------------------------------------------------- */
 
 #workspaces button {
@@ -24,86 +26,67 @@ window#waybar {
 	border-radius: 15px;
 	margin: 5px;
 	padding: 0px 10px;
-	color: #d3d3d3;
+	color: @foreground;
 }
 
 #workspaces button.active {
-	background: #d3d3d3;
-	color: #000000;
+	background: @foreground;
+	color: @background;
 	margin: 5px;
 	padding: 0px 10px;
 }
 
-/* -----------------------------------------------------
- * Window
- * ----------------------------------------------------- */
-#window {
-	color: #15161e;
-	background: #c0caf5;
-	border-radius: 15px;
-	margin: 5px;
-	padding: 0px 10px;
-}
-
-#memory {
-	color: #15161e;
-	background: #9ece6a;
-	border-radius: 15px;
-	margin: 5px;
-	padding: 0px 10px;
-}
-
-#clock {
-	color: #15161e;
-	background: #ff79c6;
+#network {
+	color: @color0;
+	background: @color5;
 	border-radius: 15px;
 	margin: 5px;
 	padding: 0px 10px;
 }
 
 #cpu {
-	color: #15161e;
-	background: #f1fa8c;
+	color: @color0;
+	background: @color6;
+	border-radius: 15px;
+	margin: 5px;
+	padding: 0px 10px;
+}
+
+#memory {
+	color: @color0;
+	background: @color7;
 	border-radius: 15px;
 	margin: 5px;
 	padding: 0px 10px;
 }
 
 #disk {
-	color: #15161e;
-	background: #7dcfff;
+	color: @color0;
+	background: @color8;
 	border-radius: 15px;
 	margin: 5px;
 	padding: 0px 10px;
 }
 
 #battery {
-	color: #15161e;
-	background: #c0caf5;
-	border-radius: 15px;
-	margin: 5px;
-	padding: 0px 10px;
-}
-
-#network {
-	color: #15161e;
-	background: #e0af68;
-	border-radius: 15px;
-	margin: 5px;
-	padding: 0px 10px;
-}
-
-#tray {
-	color: #15161e;
-	background: #414868;
+	color: @color0;
+	background: @color12;
 	border-radius: 15px;
 	margin: 5px;
 	padding: 0px 10px;
 }
 
 #pulseaudio {
-	color: #15161e;
-	background: #bb9af7;
+	color: @color0;
+	background: @color13;
+	border-radius: 15px;
+	margin: 5px;
+	padding: 0px 10px;
+}
+
+#clock {
+	color: @color0;
+	background: @color14;
 	border-radius: 15px;
 	margin: 5px;
 	padding: 0px 10px;

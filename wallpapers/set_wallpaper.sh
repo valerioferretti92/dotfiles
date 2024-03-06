@@ -38,7 +38,9 @@ hyprctl hyprpaper preload "${WALLPAPERS_PATH}/${WALLPAPER_NAME}"
 MONITORS=$(hyprctl monitors | grep Monitor | sed 's/^Monitor \(.*\) (ID [0-9]*):$/\1/')
 for MONITOR in $MONITORS
 do
-	hyprctl hyprpaper wallpaper "${MONITOR},${WALLPAPERS_PATH}/${WALLPAPER_NAME}"
+	hyprctl hyprpaper wallpaper "${MONITOR},${WALLPAPERS_PATH}/${WALLPAPER_NAME}" &
 done
 
+# Storing wallpaper pathin temp file
+echo ${WALLPAPERS_PATH}/${WALLPAPER_NAME} > /tmp/wallpaper
 exit 0
