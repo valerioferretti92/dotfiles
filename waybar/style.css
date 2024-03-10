@@ -1,4 +1,5 @@
 @import '../../.cache/wal/colors-waybar.css';
+@import '../../.cache/wal/additional-colors-waybar.css';
 
 /* -----------------------------------------------------
  * General
@@ -10,8 +11,8 @@
 }
 
 window#waybar {
-	background-color: rgba(29,31,33,0.6);
-	border-bottom: 1px solid rgba(29,31,33,0);
+	background-color: @background-opacity;
+	border: 0px solid @background-opacity;
 	border-radius: 15px;
 }
 
