@@ -6,19 +6,19 @@ LOCK_FILE="/tmp/wallpaper.lock"
 
 # Function to remove lock file
 remove_lock_file() {
-		if [ -f "$LOCK_FILE" ];
-		then
-				rm -f "$LOCK_FILE"
-				echo "$LOCK_FILE removed."
-		else
-				echo "$LOCK_FILE does not exist."
-		fi
+	if [ -f "$LOCK_FILE" ];
+	then
+		rm -f "$LOCK_FILE"
+		echo "$LOCK_FILE removed."
+	else
+		echo "$LOCK_FILE does not exist."
+	fi
 }
 
 # Check if lock file exists
 if [ -f "$LOCK_FILE" ]; then
-		echo "Lock file exists. Exiting."
-		exit 0
+	echo "Lock file exists. Exiting."
+	exit 0
 fi
 
 # Trap any signals or errors and remove lock file before exiting
