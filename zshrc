@@ -129,7 +129,7 @@ else
 	alias ll="lsd -la"
 	alias st="${HOME}/repos/public/dotfiles/hypr/selectt.sh"
 
-	eval "$(zoxide init zsh)"
+	eval "$(zoxide init zsh --cmd cd)"
 
 	# Motivational message
 	motivate
