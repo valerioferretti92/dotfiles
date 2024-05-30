@@ -8,7 +8,7 @@
 --
 -- File: config/keymaps.lua
 -- Description: Key mapping configs
--- Author: Kien Nguyen-Tuan <kiennt2609@gmail.com>
+-- Author: Valerio Ferretti <valerio.ferretti92@gmail.com>
 
 -- Panes
 vim.keymap.set("n", "<C-h>", "<Cmd>NvimTmuxNavigateLeft<CR>", {})
@@ -33,10 +33,18 @@ vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
 vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
 
--- NvimTree
-vim.keymap.set("n", "<leader>t", ":NvimTreeToggle<CR>", {}) -- open/close
-
 -- Tabs
 vim.keymap.set("n", "<leader>n", "<cmd>:tabn<cr>", {desc = 'Tab next'})
 vim.keymap.set("n", "<leader>p", "<cmd>:tabp<cr>", {desc = 'Tab prev'})
-vim.keymap.set("n", "<leader>c", "<cmd>:tabc<cr>", {desc = 'Tab prev'})
+vim.keymap.set("n", "<leader>c", "<cmd>:tabc<cr>", {desc = 'Quit tab'})
+
+-- NvimTree
+vim.keymap.set("n", "<leader>t", ":NvimTreeToggle<CR>", {})
+vim.keymap.set('n', 'C-x', api.node.open.horizontal, opts('Open: Horizontal Split'))
+vim.keymap.set('n', 'C-y', api.node.open.vertical, opts('Open: Vertical Split'))
+vim.keymap.set('n', '<C-t>', api.node.open.tab, opts('Open: New Tab'))
+vim.keymap.set('n', 'r', api.fs.rename, opts('Rename'))
+vim.keymap.set('n', 'a', api.fs.create, opts('Create File Or Directory'))
+vim.keymap.set('n', 'p', api.fs.paste, opts('Paste'))
+vim.keymap.set('n', 'x', api.fs.cut, opts('Cut'))
+vim.keymap.set('n', 'y', api.fs.copy.node, opts('Copy'))

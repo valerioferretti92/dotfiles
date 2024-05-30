@@ -20,6 +20,7 @@ return {{
 		opt = true
 	},
 	opts = {
+		open_on_tab = true,
 		filters = {
 			dotfiles = false
 		},

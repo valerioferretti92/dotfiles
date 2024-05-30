@@ -8,9 +8,7 @@
 --
 -- File: config/autocmds.lua
 -- Description: Autocommand functions
--- Author: Kien Nguyen-Tuan <kiennt2609@gmail.com>
--- Define autocommands with Lua APIs
--- See: h:api-autocmd, h:augroup
+-- Author: Valerio Ferretti <valerio.ferretti92@gmail.com>
 local augroup = vim.api.nvim_create_augroup -- Create/get autocommand group
 local autocmd = vim.api.nvim_create_autocmd -- Create autocommand
 
@@ -46,13 +44,18 @@ autocmd("BufEnter", {
 })
 
 autocmd("Filetype", {
-	pattern = {"xml", "html", "xhtml", "css", "scss", "javascript", "typescript", "yaml", "lua"},
-	command = "setlocal shiftwidth=2 tabstop=2"
+	pattern = {"*"},
+	command = "setlocal shiftwidth=2 tabstop=2 expandtab"
+})
+
+autocmd("Filetype", {
+	pattern = {"go", "sh", "lua"},
+	command = "setlocal shiftwidth=2 tabstop=2 noexpandtab"
 })
 
 -- Set colorcolumn
 autocmd("Filetype", {
-	pattern = {"python", "rst", "c", "cpp"},
+	pattern = {"*"},
 	command = "set colorcolumn=80"
 })
 

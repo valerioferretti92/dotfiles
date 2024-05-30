@@ -8,7 +8,7 @@
 --
 -- File: config/options.lua
 -- Description: General Neovim settings and configuration
--- Author: Kien Nguyen-Tuan <kiennt2609@gmail.com>
+-- Author: Valerio Ferretti <valerio.ferretti92@gmail.com>
 local cmd = vim.cmd
 
 -- Set options (global/buffer/windows-scoped)
@@ -29,15 +29,6 @@ vim.opt.fileencoding = "utf-8" -- the encoding written to a file
 opt.encoding = "utf-8" -- the encoding
 opt.matchpairs = {"(:)", "{:}", "[:]", "<:>"}
 opt.syntax = "enable"
-
--- indention
-opt.autoindent = true -- auto indentation
-opt.expandtab = false -- convert tabs to spaces
-opt.shiftwidth = 2 -- the number of spaces inserted for each indentation
-opt.smartindent = true -- make indenting smarter
-opt.softtabstop = indent -- when hitting <BS>, pretend like a tab is removed, even if spaces
-opt.tabstop = 2 -- insert 2 spaces for a tab
-opt.shiftround = true -- use multiple of shiftwidth when indenting with "<" and ">"
 
 -- search
 opt.hlsearch = true -- highlight all matches on previous search pattern
