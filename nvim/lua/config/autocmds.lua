@@ -45,12 +45,12 @@ autocmd("BufEnter", {
 
 autocmd("Filetype", {
 	pattern = {"*"},
-	command = "setlocal shiftwidth=2 tabstop=2 expandtab"
+	command = "setlocal expandtab"
 })
 
 autocmd("Filetype", {
 	pattern = {"go", "sh", "lua"},
-	command = "setlocal shiftwidth=2 tabstop=2 noexpandtab"
+	command = "setlocal noexpandtab"
 })
 
 -- Set colorcolumn
