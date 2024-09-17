@@ -146,6 +146,7 @@ source ${HOME}/repos/external/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 # Env vars
 export PATH=${PATH}:${HOME}/go/bin
+export GOPATH=${HOME}/go
 export PAGER=less
 export MINIKUBE_IN_STYLE=false
 export EDITOR="/usr/bin/nvim"

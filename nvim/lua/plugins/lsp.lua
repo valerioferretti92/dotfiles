@@ -70,7 +70,15 @@ return {{
 			jsonls = {},
 			dockerls = {},
 			bashls = {},
-			gopls = {},
+			gopls = {
+				analyses = {
+					unusedparams = true
+				},
+				staticcheck = true,
+				gofumpt = true
+			},
+			ts_ls= {},
+			eslint = {},
 			ruff_lsp = {},
 			vimls = {},
 			yamlls = {},
