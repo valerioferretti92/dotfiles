@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Poweroff
+Comment=Shut down the computer
+Exec=poweroff
+Icon=/home/valerio/repos/public/dotfiles/icons/power.png
+Terminal=false
+Type=Application
+Categories=System;Utility;

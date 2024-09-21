@@ -1,0 +1,22 @@
+[MIME Cache]
+application/pdf=google-chrome.desktop;
+application/rdf+xml=google-chrome.desktop;
+application/rss+xml=google-chrome.desktop;
+application/x-bittorrent=popcorntime.desktop;
+application/x-code-workspace=code.desktop;
+application/xhtml+xml=google-chrome.desktop;
+application/xhtml_xml=google-chrome.desktop;
+application/xml=google-chrome.desktop;
+image/gif=google-chrome.desktop;
+image/jpeg=google-chrome.desktop;
+image/png=google-chrome.desktop;
+image/webp=google-chrome.desktop;
+inode/directory=code.desktop;
+text/html=google-chrome.desktop;
+text/plain=code.desktop;
+text/xml=google-chrome.desktop;
+x-scheme-handler/bitwarden=bitwarden.desktop;
+x-scheme-handler/ferdium=ferdium-wayland.desktop;
+x-scheme-handler/http=google-chrome.desktop;
+x-scheme-handler/https=google-chrome.desktop;
+x-scheme-handler/magnet=popcorntime.desktop;
