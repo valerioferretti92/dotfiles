@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Lock Screen
+Comment=Lock the screen
+Exec=bash -c "pkill wofi; sleep 0.5; swaylock"
+Icon=/home/valerio/repos/public/dotfiles/icons/lock.png
+Terminal=false
+Type=Application
+Categories=Utility;
