@@ -8,4 +8,6 @@ if [ -z "$WALLPAPER_PATH" ]; then
 	exit -1
 fi
 
-${HOME}/repos/public/dotfiles/wallpapers/setw.sh $WALLPAPER_PATH > /dev/null 2>&1
+echo ${WALLPAPER_PATH} > /tmp/wallpaper
+
+${HOME}/repos/public/dotfiles/wallpapers/setwww.sh ${WALLPAPER_PATH} > /dev/null 2>&1 &

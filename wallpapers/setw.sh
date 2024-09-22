@@ -40,6 +40,4 @@ do
 	hyprctl hyprpaper wallpaper "${MONITOR},${WALLPAPER_PATH}" &
 done
 
-# Storing wallpaper pathin temp file
-echo ${WALLPAPER_PATH} > /tmp/wallpaper
 exit 0
