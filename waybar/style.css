@@ -85,9 +85,17 @@ window#waybar {
 	padding: 0px 10px;
 }
 
-#clock {
+#backlight {
 	color: @color0;
 	background: @color14;
+	border-radius: 15px;
+	margin: 5px;
+	padding: 0px 10px;
+}
+
+#clock {
+	color: @color0;
+	background: @color15;
 	border-radius: 15px;
 	margin: 5px;
 	padding: 0px 10px;
