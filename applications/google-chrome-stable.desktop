@@ -1,0 +1,6 @@
+[Desktop Entry]
+Exec=/bin/google-chrome-stable
+MimeType=text/plain;
+Name=google-chrome-stable
+NoDisplay=true
+Type=Application

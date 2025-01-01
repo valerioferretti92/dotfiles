@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Electron 33
+Icon=electron33
+Exec=electron33 %u --enable-features=UseOzonePlatform --ozone-platform=wayland
+Categories=Development;GTK;
+StartupNotify=true
