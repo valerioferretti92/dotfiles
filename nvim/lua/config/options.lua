@@ -114,5 +114,5 @@ for _, plugin in pairs(disabled_built_ins) do
 end
 
 -- colorscheme
-cmd.colorscheme("gruvbox")
+cmd.colorscheme("dracula")
 vim.cmd("highlight Normal guibg=NONE ctermbg=NONE")

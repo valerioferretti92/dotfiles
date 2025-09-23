@@ -79,7 +79,7 @@ return {{
 			},
 			ts_ls= {},
 			eslint = {},
-			ruff_lsp = {},
+			ruff = {},
 			vimls = {},
 			yamlls = {},
 			jdtls = {},
