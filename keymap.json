@@ -1,0 +1,20 @@
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-b": "workspace::ToggleLeftDock",
+      "cmd-t": "workspace::ToggleBottomDock"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {}
+  },
+  {
+    "context": "Editor && edit_prediction",
+    "bindings": {
+      "alt-enter": "editor::AcceptEditPrediction",
+      "tab": null
+    }
+  }
+]

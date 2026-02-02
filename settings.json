@@ -1,0 +1,35 @@
+{
+  "icon_theme": "Colored Zed Icons Theme Dark",
+  "agent": {
+    "always_allow_tool_actions": true,
+    "default_model": {
+      "provider": "google",
+      "model": "gemini-2.5-flash"
+    }
+  },
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
+  "vim_mode": true,
+  "ui_font_size": 17,
+  "buffer_font_size": 15,
+  "theme": {
+    "mode": "light",
+    "light": "One Dark",
+    "dark": "Tokyo Night"
+  },
+  "buffer_font_features": {
+    "calt": false
+  },
+  "show_wrap_guides": true,
+  "wrap_guides": [
+    60,
+    80
+  ],
+  "preferred_line_length": 80,
+  "file_types": {
+    "XML": [
+      "svg"
+    ]
+  }
+}
