@@ -1,4 +1,7 @@
 {
+  "edit_predictions": {
+    "provider": "zed"
+  },
   "icon_theme": "Colored Zed Icons Theme Dark",
   "agent": {
     "always_allow_tool_actions": true,
@@ -6,9 +9,6 @@
       "provider": "google",
       "model": "gemini-2.5-flash"
     }
-  },
-  "features": {
-    "edit_prediction_provider": "zed"
   },
   "vim_mode": true,
   "ui_font_size": 17,

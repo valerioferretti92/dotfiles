@@ -129,7 +129,9 @@ else
 	alias ll="lsd -la"
 fi
 
-export PATH=${PATH}:/home/valerio/go/bin/
+export GOPATH=${HOME}/.go
+export PATH=${PATH}:${GOPATH}/bin/
+export PATH=${PATH}:/home/valerio/.cargo/bin/
 
 ## Syntx highlight
 source /home/valerio/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
