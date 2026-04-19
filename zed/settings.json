@@ -1,14 +1,17 @@
 {
   "edit_predictions": {
-    "provider": "zed"
+    "provider": "zed",
   },
   "icon_theme": "Colored Zed Icons Theme Dark",
   "agent": {
-    "always_allow_tool_actions": true,
+    "tool_permissions": {
+      "default": "allow",
+    },
     "default_model": {
-      "provider": "google",
-      "model": "gemini-2.5-flash"
-    }
+      "enable_thinking": false,
+      "provider": "openai",
+      "model": "o1",
+    },
   },
   "vim_mode": true,
   "ui_font_size": 17,
@@ -16,20 +19,15 @@
   "theme": {
     "mode": "light",
     "light": "One Dark",
-    "dark": "Tokyo Night"
+    "dark": "Tokyo Night",
   },
   "buffer_font_features": {
-    "calt": false
+    "calt": false,
   },
   "show_wrap_guides": true,
-  "wrap_guides": [
-    60,
-    80
-  ],
+  "wrap_guides": [60, 80],
   "preferred_line_length": 80,
   "file_types": {
-    "XML": [
-      "svg"
-    ]
-  }
+    "XML": ["svg"],
+  },
 }

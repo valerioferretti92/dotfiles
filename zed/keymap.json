@@ -3,18 +3,21 @@
     "context": "Workspace",
     "bindings": {
       "cmd-b": "workspace::ToggleLeftDock",
-      "cmd-t": "workspace::ToggleBottomDock"
-    }
+      "cmd-t": "workspace::ToggleBottomDock",
+    },
   },
   {
     "context": "Editor",
-    "bindings": {}
+    "bindings": {
+      "tab": "editor::Indent",
+      "alt-tab": "editor::AcceptEditPrediction",
+    },
   },
   {
-    "context": "Editor && edit_prediction",
+    "context": "Terminal",
     "bindings": {
-      "alt-enter": "editor::AcceptEditPrediction",
-      "tab": null
-    }
-  }
+      "cmd-c": "terminal::Copy",
+      "cmd-v": "terminal::Paste",
+    },
+  },
 ]
