@@ -1,9 +1,22 @@
 {
+  "project_panel": {
+    "dock": "left"
+  },
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "git_panel": {
+    "dock": "left"
+  },
   "edit_predictions": {
     "provider": "zed",
   },
   "icon_theme": "Colored Zed Icons Theme Dark",
   "agent": {
+    "dock": "right",
     "tool_permissions": {
       "default": "allow",
     },
