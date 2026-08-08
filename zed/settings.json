@@ -16,14 +16,16 @@
   },
   "icon_theme": "Colored Zed Icons Theme Dark",
   "agent": {
+    "default_profile": "write",
+    "favorite_models": [],
     "dock": "right",
     "tool_permissions": {
       "default": "allow",
     },
     "default_model": {
       "enable_thinking": false,
-      "provider": "openai",
-      "model": "o1",
+      "provider": "ollama",
+      "model": "gemma4:31b-cloud",
     },
   },
   "vim_mode": true,
