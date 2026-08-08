@@ -132,6 +132,8 @@ fi
 export GOPATH=${HOME}/.go
 export PATH=${PATH}:${GOPATH}/bin/
 export PATH=${PATH}:/home/valerio/.cargo/bin/
+export PATH=${PATH}:/home/valerio/.local/bin/
+export PROMPT_EOL_MARK="↴"
 
 ## Syntx highlight
 source /home/valerio/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
