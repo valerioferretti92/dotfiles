@@ -1,0 +1,52 @@
+# --- Valid Commands (Plain Green) ---
+ble-face -s command_builtin           'fg=green,bg=none'
+ble-face -s command_builtin_dot       'fg=green,bg=none'
+ble-face -s command_alias             'fg=green,bg=none'
+ble-face -s command_function          'fg=green,bg=none'
+ble-face -s command_file              'fg=green,bg=none'
+ble-face -s command_keyword           'fg=green,bg=none'
+ble-face -s command_jobs              'fg=green,bg=none'
+ble-face -s syntax_command            'fg=green,bg=none'
+
+# --- Bad Commands & Syntax Errors (Plain Red) ---
+ble-face -s filename_warning          'fg=red,bg=none'
+ble-face -s syntax_error              'fg=red,bg=none'
+ble-face -s argument_error            'fg=red,bg=none'
+
+# --- Directories / Folders (Blue, No Underline, No Background) ---
+ble-face -s command_directory         'fg=33,bg=none'
+ble-face -s filename_directory        'fg=33,bg=none'
+ble-face -s filename_directory_sticky 'fg=33,bg=none'
+
+# --- Normal Files & Arguments (Default Text Color, No Underline) ---
+ble-face -s filename_other            'none'
+ble-face -s filename_executable       'none'
+ble-face -s filename_link             'none'
+ble-face -s filename_socket           'none'
+ble-face -s filename_pipe             'none'
+ble-face -s filename_character        'none'
+ble-face -s filename_block            'none'
+ble-face -s argument_option           'none'
+
+# --- Completion Menu & Selection (No Background, Selected Item in Bold) ---
+ble-face -s menu_complete_selected    'bold'
+ble-face -s menu_complete_match       'none'
+ble-face -s menu_filter_input         'none'
+ble-face -s menu_filter_fixed         'none'
+ble-face -s auto_complete             'fg=242,bg=none'
+
+# --- Selections, Regions, History Search & Visual Bell (No Backgrounds) ---
+# ble-face -s history_match             'fg=green,bg=none,bold'
+ble-face -s syntax_history_expansion  'fg=green,bg=none'
+ble-face -s region                    'none'
+ble-face -s region_target             'none'
+ble-face -s region_match              'none'
+ble-face -s region_insert             'none'
+ble-face -s command_suffix            'none'
+ble-face -s command_suffix_new        'none'
+ble-face -s vbell                     'none'
+ble-face -s vbell_erase               'none'
+ble-face -s vbell_flash               'none'
+
+# --- Disable LS_COLORS Formatting Overrides ---
+ble-face -s filename_ls_colors        'none'
