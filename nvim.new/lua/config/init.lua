@@ -75,7 +75,7 @@ require("lazy").setup({
 
 -- config.custom is an optional, gitignored module for machine-local settings
 -- that isn't part of this repo, so it's allowed to be missing.
-local modules = {"config.autocmds", "config.options", "config.keymaps", "config.custom"}
+local modules = {"config.filetypes", "config.autocmds", "config.options", "config.keymaps", "config.custom"}
 
 for _, mod in ipairs(modules) do
 	local ok, err = pcall(require, mod)

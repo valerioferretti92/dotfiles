@@ -76,55 +76,81 @@ return {{
 	event = {"BufReadPre", "BufNewFile"},
 	dependencies = {"williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim", "hrsh7th/nvim-cmp"},
 	opts = {
-		-- Server names as known by mason-lspconfig; {} means "use defaults"
+		-- Keys are lspconfig server names, {} means "use its defaults". To add
+		-- a language: find its server name under lua/lsp/*.lua in the
+		-- nvim-lspconfig repo (or `:help lspconfig-all`), add it here with {},
+		-- and mason will install the underlying binary the next time you open
+		-- a matching file. Only add per-server settings (like gopls below) if
+		-- the defaults aren't good enough.
 		servers = {
-			jsonls = {},
-			dockerls = {},
+			-- bash
 			bashls = {},
+			-- go: gopls reads its options from the LSP `settings` payload,
+			-- namespaced under its own name (`settings.gopls`), not from the
+			-- top level of the client config
 			gopls = {
-				analyses = {
-					unusedparams = true
-				},
-				staticcheck = true,
-				gofumpt = true
+				settings = {
+					gopls = {
+						analyses = {
+							unusedparams = true
+						},
+						staticcheck = true,
+						gofumpt = true
+					}
+				}
 			},
+			-- json / yaml
+			jsonls = {},
+			yamlls = {},
+			-- sql: only attaches inside a project with a `.sqllsrc.json` file,
+			-- see https://github.com/joe-re/sql-language-server
+			sqlls = {},
+			-- helm: only attaches inside a chart (a directory with Chart.yaml),
+			-- see config/filetypes.lua for how .yaml files under templates/ are
+			-- recognized as Helm rather than plain YAML
+			helm_ls = {},
+			-- javascript / typescript
 			ts_ls = {},
 			eslint = {},
-			ruff = {},
-			vimls = {},
-			yamlls = {},
+			biome = {},
+			-- java
 			jdtls = {},
-			biome = {}
+			-- css / html
+			cssls = {},
+			html = {},
+			-- misc
+			dockerls = {},
+			ruff = {}, -- python
+			vimls = {}
 		}
 	},
 	config = function(_, opts)
-		local servers = opts.servers
+		-- `vim.lsp.config()` is Neovim's own registry of per-server settings
+		-- (native since 0.11); nvim-lspconfig just ships the bundled defaults
+		-- it reads from. The "*" server name below sets defaults merged into
+		-- *every* server's config, which is how the cmp_nvim_lsp capabilities
+		-- (autocompletion-related capabilities the server needs to know
+		-- about) reach every language server without repeating them per
+		-- server.
 		local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+		vim.lsp.config("*", {
+			capabilities = capabilities
+		})
 
-		local function setup(server)
-			local server_opts = vim.tbl_deep_extend("force", {
-				capabilities = vim.deepcopy(capabilities)
-			}, servers[server] or {})
-			require("lspconfig")[server].setup(server_opts)
-		end
-
-		-- Servers already installed via mason get set up immediately; the rest
-		-- are queued for mason to install, then mason-lspconfig sets them up.
-		local mlsp = require("mason-lspconfig")
-		local available = mlsp.get_available_servers()
-		local ensure_installed = {}
-
-		for server in pairs(servers) do
-			if vim.tbl_contains(available, server) then
-				ensure_installed[#ensure_installed + 1] = server
-			else
-				setup(server)
+		-- Per-server overrides (e.g. gopls below) are merged on top of both
+		-- the "*" defaults above and nvim-lspconfig's own defaults for that
+		-- server.
+		for server, server_opts in pairs(opts.servers) do
+			if next(server_opts) then
+				vim.lsp.config(server, server_opts)
 			end
 		end
 
-		mlsp.setup({
-			ensure_installed = ensure_installed,
-			automatic_installation = true
+		-- Installs any server above that mason doesn't have yet, then enables
+		-- (`vim.lsp.enable()`) every server mason has installed, using
+		-- whichever config was registered for it above.
+		require("mason-lspconfig").setup({
+			ensure_installed = vim.tbl_keys(opts.servers)
 		})
 	end
 }, {
