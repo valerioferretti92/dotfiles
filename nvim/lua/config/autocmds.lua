@@ -4,7 +4,7 @@
 -- ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
 -- ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
 -- ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
--- ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝	 ╚═╝
+-- ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
 --
 -- File: config/autocmds.lua
 -- Description: Autocommand functions
@@ -12,54 +12,72 @@
 local augroup = vim.api.nvim_create_augroup -- Create/get autocommand group
 local autocmd = vim.api.nvim_create_autocmd -- Create autocommand
 
--- General settings
+-- All autocommands below live in this single group. `clear = true` wipes any
+-- previous autocommands in the group, so reloading this file (e.g. via the
+-- <leader>r keymap) doesn't register the same autocommand twice.
+local group = augroup("valerio_autocmds", {
+	clear = true
+})
 
--- Highlight on yank
+-- Briefly flash the yanked text, so it's easy to see what was just copied
 autocmd("TextYankPost", {
+	group = group,
 	callback = function()
 		vim.highlight.on_yank({
 			higroup = "IncSearch",
-			timeout = "1000"
+			timeout = 1000
 		})
 	end
 })
 
--- Remove whitespace on save
+-- Strip trailing whitespace on every save
 autocmd("BufWritePre", {
-	pattern = "",
-	command = ":%s/\\s\\+$//e"
+	group = group,
+	pattern = "*",
+	command = [[%s/\s\+$//e]]
 })
 
--- Auto format on save using the attached (optionally filtered) language servere clients
+-- Format the buffer on save using whatever LSP client is attached
 -- https://neovim.io/doc/user/lsp.html#vim.lsp.buf.format()
 autocmd("BufWritePre", {
-	pattern = "",
-	command = ":silent lua vim.lsp.buf.format()"
+	group = group,
+	pattern = "*",
+	callback = function()
+		vim.lsp.buf.format({
+			timeout_ms = 2000
+		})
+	end
 })
 
--- Don"t auto commenting new lines
+-- Don't let filetype plugins auto-insert comment leaders on `o`/`O`/<CR>
 autocmd("BufEnter", {
-	pattern = "",
-	command = "set fo-=c fo-=r fo-=o"
+	group = group,
+	pattern = "*",
+	command = "set formatoptions-=c formatoptions-=r formatoptions-=o"
 })
 
-autocmd("Filetype", {
-	pattern = {"*"},
+-- Indent with spaces by default, real tabs for filetypes that expect them
+autocmd("FileType", {
+	group = group,
+	pattern = "*",
 	command = "setlocal expandtab"
 })
-
-autocmd("Filetype", {
+autocmd("FileType", {
+	group = group,
 	pattern = {"go", "sh", "lua"},
 	command = "setlocal noexpandtab"
 })
 
--- Set colorcolumn
-autocmd("Filetype", {
-	pattern = {"*"},
-	command = "set colorcolumn=80"
+-- Show a ruler at 80 columns
+autocmd("FileType", {
+	group = group,
+	pattern = "*",
+	command = "setlocal colorcolumn=80"
 })
 
-autocmd("Filetype", {
+-- Prose-like filetypes: wrap at window width and turn spellcheck on
+autocmd("FileType", {
+	group = group,
 	pattern = {"gitcommit", "markdown", "text"},
 	callback = function()
 		vim.opt_local.wrap = true

@@ -4,221 +4,198 @@
 -- ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
 -- ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
 -- ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
--- ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝	 ╚═╝
+-- ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
 --
 -- File: plugins/lsp.lua
--- Description: LSP setup and config
--- Author: Kien Nguyen-Tuan <kiennt2609@gmail.com>
--- Enable some language servers with the additional completion capabilities offered by nvim-cmp
+-- Description: Language servers (via mason), autocompletion (via nvim-cmp)
+-- Author: Valerio Ferretti <valerio.ferretti92@gmail.com>
+--
+-- Formatting on save is handled generically in config/autocmds.lua via
+-- vim.lsp.buf.format(), so it isn't repeated here.
+
+-- Diagnostics: gutter signs + a single-line virtual text summary
+vim.diagnostic.config({
+	severity_sort = true,
+	update_in_insert = false,
+	virtual_text = {
+		spacing = 4,
+		source = "if_many"
+	},
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = "",
+			[vim.diagnostic.severity.WARN] = "",
+			[vim.diagnostic.severity.INFO] = "",
+			[vim.diagnostic.severity.HINT] = ""
+		}
+	},
+	float = {
+		border = "rounded",
+		source = true
+	}
+})
+
+-- Keymaps below are buffer-local and only set once a language server has
+-- actually attached to that buffer.
+vim.api.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup("valerio_lsp_attach", {clear = true}),
+	callback = function(event)
+		local function map(mode, lhs, rhs, desc)
+			vim.keymap.set(mode, lhs, rhs, {buffer = event.buf, desc = desc})
+		end
+
+		map("n", "gd", vim.lsp.buf.definition, "Goto definition")
+		map("n", "gD", vim.lsp.buf.declaration, "Goto declaration")
+		map("n", "gr", vim.lsp.buf.references, "Goto references")
+		map("n", "gI", vim.lsp.buf.implementation, "Goto implementation")
+		map("n", "K", vim.lsp.buf.hover, "Hover documentation")
+		map("n", "<leader>rn", vim.lsp.buf.rename, "Rename symbol")
+		map({"n", "v"}, "<leader>ca", vim.lsp.buf.code_action, "Code action")
+		map("n", "<leader>e", vim.diagnostic.open_float, "Show line diagnostics")
+		map("n", "[d", vim.diagnostic.goto_prev, "Previous diagnostic")
+		map("n", "]d", vim.diagnostic.goto_next, "Next diagnostic")
+	end
+})
+
 return {{
-	-- Mason
+	-- Portable package manager: installs LSP servers, DAP servers,
+	-- linters and formatters without needing them on $PATH already.
 	"williamboman/mason.nvim",
 	cmd = {"Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog"},
 	opts = {
-		PATH = "prepend",
 		ui = {
 			icons = {
-				package_pending = " ",
+				package_pending = " ",
 				package_installed = "󰄳 ",
 				package_uninstalled = " 󰚌"
-			},
-
-			keymaps = {
-				toggle_server_expand = "<CR>",
-				install_server = "i",
-				update_server = "u",
-				check_server_version = "c",
-				update_all_servers = "U",
-				check_outdated_servers = "C",
-				uninstall_server = "X",
-				cancel_installation = "<C-c>"
 			}
-		},
-
-		max_concurrent_installers = 10
-	},
-	config = function(_, opts)
-		require("mason").setup(opts)
-	end
+		}
+	}
 }, {
-	-- LSP - Quickstart configs for Nvim LSP
 	"neovim/nvim-lspconfig",
 	event = {"BufReadPre", "BufNewFile"},
-	lazy = true,
-	dependencies = { -- Mason
-	-- Portable package manager for Neovim that runs everywhere Neovim runs.
-	-- Easily install and manage LSP servers, DAP servers, linters, and formatters.
-	{"williamboman/mason.nvim"}, {"williamboman/mason-lspconfig.nvim"}, -- Autocomplete
-	-- A completion plugin for neovim coded in Lua.
-	{
-		"hrsh7th/nvim-cmp",
-		dependencies = {"L3MON4D3/LuaSnip", "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-path", "hrsh7th/cmp-buffer",
-						"saadparwaiz1/cmp_luasnip"}
-	}},
+	dependencies = {"williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim", "hrsh7th/nvim-cmp"},
 	opts = {
-		-- Automatically format on save
-		autoformat = true,
-		-- options for vim.lsp.buf.format
-		-- `bufnr` and `filter` is handled by the LazyVim formatter,
-		-- but can be also overridden when specified
-		format = {
-			formatting_options = nil,
-			timeout_ms = nil
-		},
-		-- LSP Server Settings
+		-- Keys are lspconfig server names, {} means "use its defaults". To add
+		-- a language: find its server name under lua/lsp/*.lua in the
+		-- nvim-lspconfig repo (or `:help lspconfig-all`), add it here with {},
+		-- and mason will install the underlying binary the next time you open
+		-- a matching file. Only add per-server settings (like gopls below) if
+		-- the defaults aren't good enough.
 		servers = {
-			jsonls = {},
-			dockerls = {},
+			-- bash
 			bashls = {},
+			-- go: gopls reads its options from the LSP `settings` payload,
+			-- namespaced under its own name (`settings.gopls`), not from the
+			-- top level of the client config
 			gopls = {
-				analyses = {
-					unusedparams = true
-				},
-				staticcheck = true,
-				gofumpt = true
+				settings = {
+					gopls = {
+						analyses = {
+							unusedparams = true
+						},
+						staticcheck = true,
+						gofumpt = true
+					}
+				}
 			},
-			ts_ls= {},
-			eslint = {},
-			ruff = {},
-			vimls = {},
+			-- json / yaml
+			jsonls = {},
 			yamlls = {},
+			-- sql: only attaches inside a project with a `.sqllsrc.json` file,
+			-- see https://github.com/joe-re/sql-language-server
+			sqlls = {},
+			-- helm: only attaches inside a chart (a directory with Chart.yaml),
+			-- see config/filetypes.lua for how .yaml files under templates/ are
+			-- recognized as Helm rather than plain YAML
+			helm_ls = {},
+			-- javascript / typescript
+			ts_ls = {},
+			eslint = {},
+			biome = {},
+			-- java
 			jdtls = {},
-			biome = {}
-		},
-		-- you can do any additional lsp server setup here
-		-- return true if you don"t want this server to be setup with lspconfig
-		setup = {
-			-- example to setup with typescript.nvim
-			-- tsserver = function(_, opts)
-			--   require("typescript").setup({ server = opts })
-			--   return true
-			-- end,
-			-- Specify * to use this function as a fallback for any server
-			-- ["*"] = function(server, opts) end,
+			-- css / html
+			cssls = {},
+			html = {},
+			-- misc
+			dockerls = {},
+			ruff = {}, -- python
+			vimls = {}
 		}
 	},
 	config = function(_, opts)
-		local servers = opts.servers
+		-- `vim.lsp.config()` is Neovim's own registry of per-server settings
+		-- (native since 0.11); nvim-lspconfig just ships the bundled defaults
+		-- it reads from. The "*" server name below sets defaults merged into
+		-- *every* server's config, which is how the cmp_nvim_lsp capabilities
+		-- (autocompletion-related capabilities the server needs to know
+		-- about) reach every language server without repeating them per
+		-- server.
 		local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+		vim.lsp.config("*", {
+			capabilities = capabilities
+		})
 
-		local function setup(server)
-			local server_opts = vim.tbl_deep_extend("force", {
-				capabilities = vim.deepcopy(capabilities)
-			}, servers[server] or {})
-
-			if opts.setup[server] then
-				if opts.setup[server](server, server_opts) then
-					return
-				end
-			elseif opts.setup["*"] then
-				if opts.setup["*"](server, server_opts) then
-					return
-				end
-			end
-			require("lspconfig")[server].setup(server_opts)
-		end
-
-		local mlsp = require("mason-lspconfig")
-		local available = mlsp.get_available_servers()
-
-		local ensure_installed = {} ---@type string[]
-		for server, server_opts in pairs(servers) do
-			if server_opts then
-				server_opts = server_opts == true and {} or server_opts
-				-- run manual setup if mason=false or if this is a server that cannot be installed with mason-lspconfig
-				if server_opts.mason == false or not vim.tbl_contains(available, server) then
-					setup(server)
-				else
-					ensure_installed[#ensure_installed + 1] = server
-				end
+		-- Per-server overrides (e.g. gopls below) are merged on top of both
+		-- the "*" defaults above and nvim-lspconfig's own defaults for that
+		-- server.
+		for server, server_opts in pairs(opts.servers) do
+			if next(server_opts) then
+				vim.lsp.config(server, server_opts)
 			end
 		end
 
-		require("mason").setup()
+		-- Installs any server above that mason doesn't have yet, then enables
+		-- (`vim.lsp.enable()`) every server mason has installed, using
+		-- whichever config was registered for it above.
 		require("mason-lspconfig").setup({
-			ensure_installed = ensure_installed,
-			automatic_installation = true
+			ensure_installed = vim.tbl_keys(opts.servers)
 		})
 	end
 }, {
-	-- load luasnips + cmp related in insert mode only
+	-- Autocompletion, only needed once insert mode is entered
 	"hrsh7th/nvim-cmp",
 	event = "InsertEnter",
 	dependencies = {{
-		-- snippet plugin
-		"L3MON4D3/LuaSnip",
-		dependencies = "rafamadriz/friendly-snippets",
+		"L3MON4D3/LuaSnip", -- snippet engine
+		dependencies = "rafamadriz/friendly-snippets", -- the actual vscode-style snippets
 		opts = {
-			history = true,
+			history = true, -- keep snippet placeholders jumpable after leaving insert mode
 			updateevents = "TextChanged,TextChangedI"
 		},
 		config = function(_, opts)
-			require("luasnip").config.set_config(opts)
-
-			-- vscode format
+			require("luasnip").setup(opts)
 			require("luasnip.loaders.from_vscode").lazy_load()
-			require("luasnip.loaders.from_vscode").lazy_load {
-				paths = vim.g.vscode_snippets_path or ""
-			}
-
-			-- snipmate format
-			require("luasnip.loaders.from_snipmate").load()
-			require("luasnip.loaders.from_snipmate").lazy_load {
-				paths = vim.g.snipmate_snippets_path or ""
-			}
-
-			-- lua format
-			require("luasnip.loaders.from_lua").load()
-			require("luasnip.loaders.from_lua").lazy_load {
-				paths = vim.g.lua_snippets_path or ""
-			}
-
-			vim.api.nvim_create_autocmd("InsertLeave", {
-				callback = function()
-					if require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()] and
-						not require("luasnip").session.jump_active then
-						require("luasnip").unlink_current()
-					end
-				end
-			})
 		end
-		},{
-			"saadparwaiz1/cmp_luasnip",
-			"hrsh7th/cmp-nvim-lua",
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path"
-	}}, -- cmp sources plugins
+	}, "saadparwaiz1/cmp_luasnip", "hrsh7th/cmp-nvim-lua", "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-buffer",
+					"hrsh7th/cmp-path"},
 	opts = function()
-		local cmp = require "cmp"
+		local cmp = require("cmp")
 
 		local function border(hl_name)
-			return {{"╭", hl_name}, {"─", hl_name}, {"╮", hl_name}, {"│", hl_name}, {"╯", hl_name},
-					{"─", hl_name}, {"╰", hl_name}, {"│", hl_name}}
+			return {{"╭", hl_name}, {"─", hl_name}, {"╮", hl_name}, {"│", hl_name}, {"╯", hl_name}, {"─", hl_name},
+					{"╰", hl_name}, {"│", hl_name}}
 		end
 
-		local options = {
+		return {
 			completion = {
 				completeopt = "menu,menuone"
 			},
-
 			window = {
 				completion = {
-					winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:PmenuSel",
-					scrollbar = false
+					winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:PmenuSel"
 				},
 				documentation = {
-					border = border "CmpDocBorder",
+					border = border("CmpDocBorder"),
 					winhighlight = "Normal:CmpDoc"
 				}
 			},
-
 			snippet = {
 				expand = function(args)
 					require("luasnip").lsp_expand(args.body)
 				end
 			},
-
 			mapping = {
 				["<C-p>"] = cmp.mapping.select_prev_item(),
 				["<C-n>"] = cmp.mapping.select_next_item(),
@@ -226,16 +203,16 @@ return {{
 				["<C-f>"] = cmp.mapping.scroll_docs(4),
 				["<C-Space>"] = cmp.mapping.complete(),
 				["<C-e>"] = cmp.mapping.close(),
-				["<CR>"] = cmp.mapping.confirm {
+				["<CR>"] = cmp.mapping.confirm({
 					behavior = cmp.ConfirmBehavior.Insert,
 					select = true
-				},
+				}),
 				["<Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_next_item()
 					elseif require("luasnip").expand_or_jumpable() then
-						vim.fn.feedkeys(
-							vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
+						vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true),
+							"")
 					else
 						fallback()
 					end
@@ -257,11 +234,10 @@ return {{
 			}, {
 				name = "buffer",
 				option = {
-					-- Avoid accidentally running on big files
+					-- avoid running on huge buffers
 					get_bufnrs = function()
 						local buf = vim.api.nvim_get_current_buf()
-						local byte_size = vim.api.nvim_buf_get_offset(buf, vim.api.nvim_buf_line_count(buf))
-						if byte_size > 1024 * 1024 then -- 1 Megabyte max
+						if vim.api.nvim_buf_get_offset(buf, vim.api.nvim_buf_line_count(buf)) > 1024 * 1024 then
 							return {}
 						end
 						return {buf}
@@ -273,8 +249,6 @@ return {{
 				name = "path"
 			}}
 		}
-
-		return options
 	end,
 	config = function(_, opts)
 		require("cmp").setup(opts)

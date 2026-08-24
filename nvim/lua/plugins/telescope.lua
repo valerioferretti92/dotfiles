@@ -4,23 +4,23 @@
 -- ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
 -- ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
 -- ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
--- ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝	 ╚═╝
+-- ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
 --
 -- File: plugins/telescope.lua
--- Description: nvim-telescope config
--- Author: Kien Nguyen-Tuan <kiennt2609@gmail.com>
+-- Description: Fuzzy finder for files, grep, buffers, help, ...
+-- Author: Valerio Ferretti <valerio.ferretti92@gmail.com>
+--
+-- The <leader>f* keymaps that call these pickers live in config/keymaps.lua.
 return {{
-	-- Telescope
-	-- Find, Filter, Preview, Pick. All lua, all the time.
 	"nvim-telescope/telescope.nvim",
-	dependencies = {"nvim-lua/plenary.nvim", {
-		"nvim-telescope/telescope-fzf-native.nvim",
-		build = "make"
-	}},
-	config = function(_)
+	dependencies = {
+		"nvim-lua/plenary.nvim", {
+			"nvim-telescope/telescope-fzf-native.nvim",
+			build = "make" -- native sorter, faster than the default Lua one
+		}
+	},
+	config = function()
 		require("telescope").setup()
-		-- To get fzf loaded and working with telescope, you need to call
-		-- load_extension, somewhere after setup function:
 		require("telescope").load_extension("fzf")
 	end
 }}

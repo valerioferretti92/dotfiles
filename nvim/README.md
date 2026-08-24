@@ -38,7 +38,7 @@ hand when you add a file — just drop a new file in the right directory.
 ## Directory layout
 
 ```
-init.lua                    entry point, sanity checks, require("config")
+init.lua                     entry point, sanity checks, require("config")
 lazy-lock.json               pins exact plugin commits (see below)
 lua/
   config/

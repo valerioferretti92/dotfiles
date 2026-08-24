@@ -1,59 +1,45 @@
 --
--- ███╗	 ██╗███████╗ ██████╗ ██╗	 ██╗██╗███╗	 ███╗
--- ████╗	██║██╔════╝██╔═══██╗██║	 ██║██║████╗ ████║
--- ██╔██╗ ██║█████╗	██║	 ██║██║	 ██║██║██╔████╔██║
--- ██║╚██╗██║██╔══╝	██║	 ██║╚██╗ ██╔╝██║██║╚██╔╝██║
+-- ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
+-- ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
+-- ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
+-- ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
 -- ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
--- ╚═╝	╚═══╝╚══════╝ ╚═════╝	 ╚═══╝	╚═╝╚═╝	 ╚═╝
+-- ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
 --
 -- File: plugins/gitsigns.lua
--- Description: Gitsigns configuration
+-- Description: Git change markers in the sign column, hunk navigation/staging
 -- Author: Valerio Ferretti <valerio.ferretti92@gmail.com>
 return {{
-	-- Git integration for buffers
 	"lewis6991/gitsigns.nvim",
 	opts = {
 		signs = {
-			add = { text = '┃' },
-			change = { text = '┃' },
-			delete = { text = '_' },
-			topdelete = { text = '‾' },
-			changedelete = { text = '~' },
-			untracked = { text = '┆' },
+			add = {text = "┃"},
+			change = {text = "┃"},
+			delete = {text = "_"},
+			topdelete = {text = "‾"},
+			changedelete = {text = "~"},
+			untracked = {text = "┆"}
 		},
-		signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
-		numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
-		linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
-		word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
-		watch_gitdir = {
-			follow_files = true
-		},
-		auto_attach = true,
-		attach_to_untracked = false,
-		current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
+		current_line_blame = false, -- toggle with `:Gitsigns toggle_current_line_blame`
 		current_line_blame_opts = {
-			virt_text = true,
-			virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
-			delay = 1000,
-			ignore_whitespace = false,
-			virt_text_priority = 100,
+			virt_text_pos = "eol"
 		},
-		current_line_blame_formatter = '<author>, <author_time:%R> - <summary>',
-		sign_priority = 6,
-		update_debounce = 100,
-		status_formatter = nil, -- Use default
-		max_file_length = 40000, -- Disable if file is longer than this (in lines)
-		preview_config = {
-			-- Options passed to nvim_open_win
-			border = 'single',
-			style = 'minimal',
-			relative = 'cursor',
-			row = 0,
-			col = 1
-		},
-	},
-	---@param opts TSConfig
-	config = function(_, opts)
-		require("gitsigns").setup(opts)
-	end
+		current_line_blame_formatter = "<author>, <author_time:%R> - <summary>",
+		on_attach = function(bufnr)
+			local gitsigns = require("gitsigns")
+			local function map(mode, lhs, rhs, desc)
+				vim.keymap.set(mode, lhs, rhs, {buffer = bufnr, desc = desc})
+			end
+
+			-- Hunk navigation
+			map("n", "]c", gitsigns.next_hunk, "Next git hunk")
+			map("n", "[c", gitsigns.prev_hunk, "Previous git hunk")
+
+			-- Hunk actions
+			map("n", "<leader>hs", gitsigns.stage_hunk, "Stage hunk")
+			map("n", "<leader>hr", gitsigns.reset_hunk, "Reset hunk")
+			map("n", "<leader>hp", gitsigns.preview_hunk, "Preview hunk")
+			map("n", "<leader>hb", gitsigns.blame_line, "Blame line")
+		end
+	}
 }}

@@ -1,39 +1,27 @@
 --
--- ███╗	 ██╗███████╗ ██████╗ ██╗	 ██╗██╗███╗	 ███╗
--- ████╗	██║██╔════╝██╔═══██╗██║	 ██║██║████╗ ████║
--- ██╔██╗ ██║█████╗	██║	 ██║██║	 ██║██║██╔████╔██║
--- ██║╚██╗██║██╔══╝	██║	 ██║╚██╗ ██╔╝██║██║╚██╔╝██║
+-- ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
+-- ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
+-- ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
+-- ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
 -- ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
--- ╚═╝	╚═══╝╚══════╝ ╚═════╝	 ╚═══╝	╚═╝╚═╝		 ╚═╝
+-- ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
 --
 -- File: plugins/csvview.lua
--- Description: csvview config
+-- Description: Aligns CSV columns into a readable table (:CsvViewToggle)
 -- Author: Valerio Ferretti <valerio.ferretti92@gmail.com>
 return {{
-	'hat0uma/csvview.nvim',
-		config = function ()
-			require'csvview'.setup({
-				parser = {
-				--- The number of lines that the asynchronous parser processes per cycle.
-				--- This setting is used to prevent monopolization of the main thread when displaying large files.
-				--- If the UI freezes, try reducing this value.
-				async_chunksize = 50,
-				},
-				view = {
-					--- minimum width of a column
-					min_column_width = 5,
-
-					--- spacing between columns
-					spacing = 2,
-
-					--- The display method of the delimiter
-					--- "highlight" highlights the delimiter
-					--- "border" displays the delimiter with `│`
-					--- see `Features` section of the README.
-					---@type "highlight" | "border"
-					display_mode = "border",
-				},
-			})
-	end
+	"hat0uma/csvview.nvim",
+	opts = {
+		parser = {
+			-- lines processed per cycle by the async parser; lower this if the
+			-- UI freezes on large files
+			async_chunksize = 50
+		},
+		view = {
+			min_column_width = 5,
+			spacing = 2,
+			-- "highlight" colors the delimiter, "border" draws a `│` in its place
+			display_mode = "border"
+		}
+	}
 }}
-

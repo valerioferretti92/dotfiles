@@ -4,18 +4,16 @@
 -- ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
 -- ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
 -- ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
--- ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝	 ╚═╝
+-- ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
 --
 -- File: plugins/colorizer.lua
--- Description: nvim-colorizer config
--- Author: Kien Nguyen-Tuan <kiennt2609@gmail.com>
-return { -- colorizer
-{
+-- Description: Highlights color codes (#fff, rgb(...), ...) with their color
+-- Author: Valerio Ferretti <valerio.ferretti92@gmail.com>
+return {{
 	"norcalli/nvim-colorizer.lua",
-	config = function(_)
+	config = function()
 		require("colorizer").setup()
-
-		-- execute colorizer as soon as possible
+		-- attach to the buffer open at startup too, not just future ones
 		vim.defer_fn(function()
 			require("colorizer").attach_to_buffer(0)
 		end, 0)

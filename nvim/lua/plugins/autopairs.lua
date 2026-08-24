@@ -4,39 +4,30 @@
 -- ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
 -- ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
 -- ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
--- ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝	 ╚═╝
+-- ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
 --
 -- File: plugins/autopairs.lua
--- Description: nvim-autopairs config
--- Author: Kien Nguyen-Tuan <kiennt2609@gmail.com>
+-- Description: Auto-close brackets/quotes, and play nice with nvim-cmp
+-- Author: Valerio Ferretti <valerio.ferretti92@gmail.com>
 return {{
-	-- Autopairs
 	"windwp/nvim-autopairs",
 	opts = {
-		check_ts = true,
+		check_ts = true, -- use treesitter to decide whether to add a pair
 		ts_config = {
-			lua = {"string"}, -- it will not add a pair on that treesitter node
+			lua = {"string"}, -- don't add a pair inside these treesitter nodes
 			javascript = {"template_string"},
-			java = false -- don"t check treesitter on java
+			java = false -- don't use treesitter checks for java at all
 		},
-
-		-- Don"t add pairs if it already has a close pair in the same line
-		enable_check_bracket_line = false,
-
-		-- Don"t add pairs if the next char is alphanumeric
-		ignored_next_char = "[%w%.]", -- will ignore alphanumeric and `.` symbol
+		enable_check_bracket_line = false, -- add pairs even if the line already has a closing one
+		ignored_next_char = "[%w%.]", -- don't add a pair if next char is alphanumeric or `.`
 		fast_wrap = {},
 		disable_filetype = {"TelescopePrompt", "vim"}
 	},
 	config = function(_, opts)
-		local npairs = require("nvim-autopairs")
-		npairs.setup(opts)
+		require("nvim-autopairs").setup(opts)
+
+		-- make nvim-cmp add the matching closing pair when a completion is confirmed
 		local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-		local cmp = require("cmp")
-		cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({
-			map_char = {
-				tex = ""
-			}
-		}))
+		require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
 	end
 }}

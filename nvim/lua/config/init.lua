@@ -4,34 +4,38 @@
 -- ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
 -- ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
 -- ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
--- ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝	 ╚═╝
+-- ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
 --
 -- File: config/init.lua
--- Description: Main configurations
+-- Description: Bootstraps lazy.nvim, loads plugins and core config modules
 -- Author: Valerio Ferretti <valerio.ferretti92@gmail.com>
+
+-- Bootstrap lazy.nvim (the plugin manager) if it isn't installed yet
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system(
-		{"git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", -- latest stable release
-		 lazypath})
+	vim.fn.system({
+		"git", "clone", "--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath
+	})
 end
 vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = " "
 vim.opt.termguicolors = true -- enable 24-bit RGB colors
 
--- build spec
+-- Every file under lua/plugins/ is loaded automatically. lua/plugins/custom.lua
+-- is an optional, gitignored file for machine-local plugins that isn't part of
+-- this repo; it's only added to the spec when present.
 local spec = {{
 	import = "plugins"
 }}
 
-local ok, err = pcall(require, "plugins.custom")
-if ok then
-	spec = {{
-		import = "plugins"
-	}, {
+if pcall(require, "plugins.custom") then
+	table.insert(spec, {
 		import = "plugins.custom"
-	}}
+	})
 end
 
 require("lazy").setup({
@@ -39,21 +43,18 @@ require("lazy").setup({
 	spec = spec,
 	lockfile = vim.fn.stdpath("config") .. "/lazy-lock.json", -- lockfile generated after running update.
 	defaults = {
-		lazy = false, -- should plugins be lazy-loaded?
-		version = nil
-		-- version = "*", -- enable this to try installing the latest stable versions of plugins
+		lazy = false -- should plugins be lazy-loaded by default?
 	},
 	install = {
 		-- install missing plugins on startup
 		missing = true,
-		-- try to load one of these colorschemes when starting an installation during startup
-		colorscheme = {"rose-pine", "habamax"}
+		-- colorscheme to fall back to while plugins are being installed
+		colorscheme = {"dracula", "habamax"}
 	},
 	checker = {
 		-- automatically check for plugin updates
 		enabled = true,
-		-- get a notification when new updates are found
-		-- disable it as it's too annoying
+		-- get a notification when new updates are found (off, it's noisy)
 		notify = false,
 		-- check for updates every day
 		frequency = 86400
@@ -61,8 +62,7 @@ require("lazy").setup({
 	change_detection = {
 		-- automatically check for config file changes and reload the ui
 		enabled = true,
-		-- get a notification when changes are found
-		-- disable it as it's too annoying
+		-- get a notification when changes are found (off, it's noisy)
 		notify = false
 	},
 	performance = {
@@ -73,12 +73,13 @@ require("lazy").setup({
 	state = vim.fn.stdpath("state") .. "/lazy/state.json" -- state info for checker and other things
 })
 
-local modules = {"config.autocmds", "config.options", "config.keymaps", "config.custom"}
+-- config.custom is an optional, gitignored module for machine-local settings
+-- that isn't part of this repo, so it's allowed to be missing.
+local modules = {"config.filetypes", "config.autocmds", "config.options", "config.keymaps", "config.custom"}
 
 for _, mod in ipairs(modules) do
 	local ok, err = pcall(require, mod)
-	-- config.custom may be empty. It's a optional module
-	if not ok and not mod == "config/custom" then
+	if not ok and mod ~= "config.custom" then
 		error(("Error loading %s...\n\n%s"):format(mod, err))
 	end
 end
