@@ -185,3 +185,7 @@ eval "$(zoxide init bash --cmd cd)"
 
 # Motivational message
 motivate
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/valerio/.local/bin:$PATH"

@@ -144,3 +144,7 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 # Motivational message
 motivate
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/valerio/.local/bin:$PATH"
