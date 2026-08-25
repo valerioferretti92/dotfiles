@@ -10,7 +10,7 @@
 -- Description: Highlights color codes (#fff, rgb(...), ...) with their color
 -- Author: Valerio Ferretti <valerio.ferretti92@gmail.com>
 return {{
-	"norcalli/nvim-colorizer.lua",
+	"NvChad/nvim-colorizer.lua",
 	config = function()
 		require("colorizer").setup()
 		-- attach to the buffer open at startup too, not just future ones
