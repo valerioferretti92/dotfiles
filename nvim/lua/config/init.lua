@@ -43,7 +43,7 @@ require("lazy").setup({
 	spec = spec,
 	lockfile = vim.fn.stdpath("config") .. "/lazy-lock.json", -- lockfile generated after running update.
 	defaults = {
-		lazy = false -- should plugins be lazy-loaded by default?
+		lazy = false-- should plugins be lazy-loaded by default?
 	},
 	install = {
 		-- install missing plugins on startup
